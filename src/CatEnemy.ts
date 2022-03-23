@@ -1,4 +1,5 @@
-import { Container, Sprite } from "pixi.js";
+import { Sprite } from "pixi.js";
+import { Container } from "pixi.js";
 
 export class CatEnemy extends Container {
 

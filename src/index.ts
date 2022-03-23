@@ -1,4 +1,4 @@
-import { Application, Loader } from 'pixi.js'
+import { Application, Loader } from "pixi.js";
 import { assets } from './assets';
 import { Scene } from './Scene';
 
