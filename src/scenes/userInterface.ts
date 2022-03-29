@@ -1,6 +1,10 @@
 import { Container, NineSlicePlane, Sprite, Texture, Text } from "pixi.js";
+import { Button } from "../UI/Button";
 
 export class userInterface extends Container{
+
+    private NextLevel:Button;
+
         constructor(){
             super();
 
@@ -26,8 +30,12 @@ export class userInterface extends Container{
             const StarFilled2: Sprite = Sprite.from("StarFilled");
             const StarMissing: Sprite = Sprite.from("StarMissing");
 
-            const NextLevel: Sprite = Sprite.from("arrowRight");
-            const RepeatLevel: Sprite = Sprite.from("return");
+            ///////////BOTON
+            this.NextLevel = new Button(Texture.from("arrowRight"),
+                Texture.from("arrowRight"),
+                Texture.from("arrowRight"),
+                this.NextLevelClick.bind(this),1.5);
+             const RepeatLevel: Sprite = Sprite.from("return");
            
 
 
@@ -70,9 +78,10 @@ export class userInterface extends Container{
             StarMissing.scale.set(0.05,0.05);
 
 
-            NextLevel.position.set(660,540);
-            RepeatLevel.position.set(535,535);
-
+            this.NextLevel.pivot.set(this.NextLevel.width /2, this.NextLevel.height/2)
+            this.NextLevel.position.set(700,590);
+            RepeatLevel.pivot.set(RepeatLevel.width/2,RepeatLevel.height/2);
+            RepeatLevel.position.set(585,585);
 
 
 
@@ -104,9 +113,14 @@ export class userInterface extends Container{
             this.addChild(StarFilled2);
             this.addChild(StarMissing);
 
-            this.addChild(NextLevel);
+            this.addChild(this.NextLevel);
             this.addChild(RepeatLevel);
 
 
         }
+
+private NextLevelClick(){
+    console.log("kakotagorda");
+}
+
 }

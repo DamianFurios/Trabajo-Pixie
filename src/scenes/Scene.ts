@@ -1,6 +1,6 @@
 import { Container} from "pixi.js";
-import { CatEnemy } from "./CatEnemy";
-import { CatWithSword } from "./CatWithSword";import { userInterface } from "./userinterface";
+import { CatEnemy } from "../game/CatEnemy";
+import { CatWithSword } from "../game/CatWithSword";import { userInterface } from "./userInterface";
 
 
 export class Scene extends Container{
@@ -16,7 +16,7 @@ export class Scene extends Container{
         Enemy.position.set(1150,300);
         Player.position.set (50,300);
     
-        this.addChild(Player);
+        this.addChild(Player);  
         this.addChild(Enemy);
         this.addChild(Panel);
     
