@@ -5,18 +5,18 @@ export class Button extends Container {
     private def:Texture;
     private down:Texture;
     private over:Texture;
-    private callback:Function;
+
 
     private sprScale:number;
 
     private spr:Sprite;
 
-    constructor(def:Texture, down:Texture, over:Texture, callback:Function, sprScale:number = 1){
+    constructor(def:Texture, down:Texture, over:Texture, sprScale:number = 1){
         super();
         this.def = def;
         this.down = down;
         this.over = over;
-        this.callback = callback;
+
         this.sprScale = sprScale;
 
         this.spr = Sprite.from(def);
@@ -38,9 +38,10 @@ export class Button extends Container {
         
     }
     private onMouseUp():void{
+        this.emit("buttonClick");
         this.spr.texture = this.over;
         this.spr.scale.set(this.sprScale);
-        this.callback();
+
     }
 
     private onMouseOver():void{

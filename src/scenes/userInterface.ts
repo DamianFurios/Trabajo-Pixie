@@ -1,9 +1,11 @@
 import { Container, NineSlicePlane, Sprite, Texture, Text } from "pixi.js";
 import { Button } from "../UI/Button";
+import { Keyboard } from "../utils/Keyboard";
 
 export class userInterface extends Container{
 
     private NextLevel:Button;
+    private TextCoins:Text;
 
         constructor(){
             super();
@@ -34,7 +36,8 @@ export class userInterface extends Container{
             this.NextLevel = new Button(Texture.from("arrowRight"),
                 Texture.from("arrowRight"),
                 Texture.from("arrowRight"),
-                this.NextLevelClick.bind(this),1.5);
+                1.2);
+            this.NextLevel.on("buttonClick", this.NextLevelClick, this);
              const RepeatLevel: Sprite = Sprite.from("return");
            
 
@@ -83,6 +86,11 @@ export class userInterface extends Container{
             RepeatLevel.pivot.set(RepeatLevel.width/2,RepeatLevel.height/2);
             RepeatLevel.position.set(585,585);
 
+            //Sound///////////////////////////////////////////////////////////////
+                
+            //KEYBOARD///////////////////////////////////////////////////////////
+ 
+
 
 
 
@@ -92,9 +100,9 @@ export class userInterface extends Container{
         TextNivel.position.set(640,253);
      
     
-        const TextCoins: Text = new Text("80",{fontSize: 35, fontFamily: "Comic Sans MS"})
-        TextCoins.pivot.set(TextCoins.width/2,TextCoins.height/2);
-        TextCoins.position.set(695,boton2.position.y);
+        this.TextCoins = new Text("80",{fontSize: 35, fontFamily: "Comic Sans MS"})
+        this.TextCoins.pivot.set(this.TextCoins.width/2,this.TextCoins.height/2);
+        this.TextCoins.position.set(695,boton2.position.y);
 
         const TextCash: Text = new Text("256895",{fontSize: 35, fontFamily: "Comic Sans MS"})
         TextCash.pivot.set(TextCash.width/2,TextCash.height/2);
@@ -107,7 +115,7 @@ export class userInterface extends Container{
             this.addChild(coins);
             this.addChild(cash);
             this.addChild(TextCash);
-            this.addChild(TextCoins);
+            this.addChild(this.TextCoins);
             this.addChild(TextNivel);
             this.addChild(StarFilled1);
             this.addChild(StarFilled2);
@@ -116,11 +124,22 @@ export class userInterface extends Container{
             this.addChild(this.NextLevel);
             this.addChild(RepeatLevel);
 
+            Keyboard.down.on("KeyZ", this.onKeyB, this);
+            Keyboard.up.on("KeyZ", this.onKeyBUP, this);
+
 
         }
 
-private NextLevelClick(){
-    console.log("kakotagorda");
-}
+    private onKeyB():void{
+        console.log("aprete la b", this);
+    }
+    private onKeyBUP():void{
+        console.log("solte la b", this);
+    }
+
+
+    private NextLevelClick():void{
+    console.log("kakotagorda", this);
+    }
 
 }

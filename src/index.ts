@@ -1,6 +1,7 @@
 import { Application, Loader } from "pixi.js";
 import { assets } from './assets';
 import { Scene } from './scenes/Scene';
+import { Keyboard } from "./utils/Keyboard";
 
 
 const app = new Application({
@@ -11,6 +12,8 @@ const app = new Application({
 	width: 1280,
 	height: 720
 });
+
+Keyboard.initialize();
 
 // Evento para reescalar la pantalla
 window.addEventListener("resize", ()=>{
